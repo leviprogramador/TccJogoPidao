@@ -1,4 +1,4 @@
-const mysql = require('mysql12/promise');
+const mysql = require('mysql2/promise');
 
 const bd_usuario = 'm120_tcc_g6_us';
 const bd_senha = 'noob69';
