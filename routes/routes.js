@@ -34,12 +34,12 @@ const UsuarioController = require ('../controllers/usuarioController');
 
 router.get('/alternativas', AlternativasController.listarAlternativas);
 
-// cadastrar
 // editar
 // excluir
 
 
 router.get('/comentarios', ComentariosController.listarComentarios);
+
 
 // cadastrar
 // editar
@@ -77,7 +77,7 @@ router.get('/jogoplataforma', JogoPlataformaController.listarJogoPlataforma);
 
 router.get('/jogos', JogosController.listarJogos);
 
-// cadastrar
+router.post('/jogos', JogosController.create);
 // editar
 // excluir
 
@@ -106,6 +106,7 @@ router.get('/tbllike', TblLikeController.listarTblLike);
 // excluir
 
 router.get('/usuario', UsuarioController.listarUsuario);
+router.post('/usuario', UsuarioController.create);
 
 // cadastrar
 // editar

@@ -14,4 +14,18 @@ module.exports ={
         }
 
     },
-};
+    async create (request, response) {
+        try {
+            const {Nome, email, senha, data_nasc, TipoUsu, Pontuacao, QtdQuiz} = request.body;
+            const sql = 'INSERT INTO usuario (Nome, email, senha, data_nasc, TipoUsu, Pontuacao, QtdQuiz) VALUES (?, ?, ?, ?, ?, ?, ?)';
+            const values = [Nome, email, senha, data_nasc, TipoUsu, Pontuacao, QtdQuiz];
+            const confirmacao = await db.query (sql, values);
+            const usu_id = confirmacao[0].insertId;
+
+            
+            return response.status(200).json({confirma: 'Sucesso', message: usu_id});
+        }catch (error) {
+                return response.status(500).json({confirma: 'Erro', message: error});
+            }
+        },
+    };
