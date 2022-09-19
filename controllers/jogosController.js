@@ -5,11 +5,28 @@ const db = require("../database/connection");
 module.exports ={
     async listarJogos(request, response) {
         try{
-            return response.status(200).json ({confirma: 'Jogos'});
+            const sql = 'select jogo_id, Informaçoes, Genero, linkvid, Nome, Sinopse from jogos;'
+            const jogos = await db.query(sql);
+
+            return response.status(200).json ({confirma: 'Sucesso', nResults: jogos[0].length, message: jogos[0]});
         } catch (error) {
             return response.status(500).json({confirma: 'Erro', message: error});
 
         }
 
+    },
+    async create (request, response) {
+        try {
+    const {Informaçoes, Genero, linkvid, Nome, Sinopse} = request.body;
+    const sql = 'INSERT INTO jogos (Informaçoes, Genero, linkvid, Nome, Sinopse) VALUES (?, ?, ?, ?, ?)';
+    const values = [Informaçoes, Genero, linkvid, Nome, Sinopse];
+    const confirmacao = await db.query (sql, values);
+    const jogo_id = confirmacao[0].insertId;
+
+    
+    return response.status(200).json({confirma: 'Sucesso', message: jogo_id});
+        } catch (error) {
+            return response.status (500).json({Confirma: 'Erro', message: error});
+        }
     },
 };
