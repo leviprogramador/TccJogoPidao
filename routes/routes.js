@@ -46,7 +46,7 @@ router.get('/comentarios', ComentariosController.listarComentarios);
 // excluir
 
 router.get('/favoritos', FavoritosController.listarFavoritos);
-router.get('/favoritos', FavoritosController.create);
+router.post('/favoritos', FavoritosController.create);
 // editar
 // excluir
 
