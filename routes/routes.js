@@ -52,8 +52,7 @@ router.get('/favoritos', FavoritosController.listarFavoritos);
 // excluir
 
 router.get('/genero', GeneroController.listarGenero);
-
-// cadastrar
+router.post('/genero', GeneroController.create);
 // editar
 // excluir
 
@@ -64,8 +63,7 @@ router.get('/imagem', ImagemController.listarImagem);
 // excluir
 
 router.get('/joggenero', JogGeneroController.listarJogGenero);
-
-// cadastrar
+router.post('/joggenero', JogGeneroController.create);
 // editar
 // excluir
 
@@ -100,8 +98,7 @@ router.get('/quiz', QuizController.listarQuiz);
 // excluir
 
 router.get('/tbllike', TblLikeController.listarTblLike);
-
-// cadastrar
+router.post('/tbllike', TblLikeController.create);
 // editar
 // excluir
 
