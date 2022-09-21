@@ -20,7 +20,7 @@ module.exports ={
         try{
             const {usu_id, jogo_id, Status} = request.body;
 
-            const sql = 'INSERT INTO favoritos(usu_id, jogo_id, Status) VALUES (1, 1, Jogando)';
+            const sql = 'INSERT INTO favoritos(usu_id, jogo_id, Status) VALUES (?, ?, ?)';
 
             const VALUES = [usu_id, jogo_id, Status];
 
