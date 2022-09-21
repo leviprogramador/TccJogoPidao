@@ -22,7 +22,7 @@ module.exports ={
 
             const sql = 'INSERT INTO favoritos(usu_id, jogo_id, Status) VALUES (?, ?, ?)';
 
-            const VALUES = [usu_id, jogo_id, Status];
+            const values = [usu_id, jogo_id, Status];
 
             const confirmacao = await db.query(sql, values);
 
@@ -30,7 +30,7 @@ module.exports ={
 
             return response.status(200).json({confirma: 'Sucesso', message: favoritos})
         } catch (error){
-            return response.status(500).json({confirma: 'Erro', nessage: error});
+            return response.status(500).json({confirma: 'Erro', message: error});
         }
     },
 };

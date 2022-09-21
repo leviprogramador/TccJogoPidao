@@ -58,7 +58,7 @@ router.get('/genero', GeneroController.listarGenero);
 
 router.get('/imagem', ImagemController.listarImagem);
 
-// cadastrar
+router.post('/imagem', ImagemController.create);
 // editar
 // excluir
 
