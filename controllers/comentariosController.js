@@ -16,4 +16,20 @@ module.exports ={
         }
 
     },
-};
+    async create (request, response) {
+        try {
+            const {usu_id, jogo_id, comentariofeito, ContadorLIke, Resposta} = request.body;
+            const sql = 'INSERT INTO comentarios (usu_id, jogo_id, comentariofeito, ContadorLIke, Resposta) VALUES (?, ?, ?, ?, ?)';
+            const values = [usu_id, jogo_id, comentariofeito, ContadorLIke, Resposta];
+            const confirmacao = await db.query (sql, values);
+            const coment_id = confirmacao[0].insertId;
+
+            
+            return response.status(200).json({confirma: 'Sucesso', message: coment_id});
+        }catch (error) {
+                return response.status(500).json({confirma: 'Erro', message: error});
+            }
+        },
+    };
+
+

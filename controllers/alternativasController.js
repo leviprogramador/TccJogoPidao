@@ -15,4 +15,19 @@ module.exports ={
         }
 
     },
-};
+    async create (request, response) {
+        try {
+            const {perg_id, alternativa, correta, imagem} = request.body;
+            const sql = 'INSERT INTO alternativas (perg_id, alternativa, correta, imagem) VALUES (?, ?, ?, ?)';
+            const values = [perg_id, alternativa, correta, imagem];
+            const confirmacao = await db.query (sql, values);
+            const alt_id = confirmacao[0].insertId;
+
+            
+            return response.status(200).json({confirma: 'Sucesso', message: alt_id});
+        }catch (error) {
+                return response.status(500).json({confirma: 'Erro', message: error});
+            }
+        },
+    };
+

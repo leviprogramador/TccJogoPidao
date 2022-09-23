@@ -34,11 +34,13 @@ const UsuarioController = require ('../controllers/usuarioController');
 
 router.get('/alternativas', AlternativasController.listarAlternativas);
 
+
 // editar
 // excluir
 
 
 router.get('/comentarios', ComentariosController.listarComentarios);
+router.post('/comentarios', ComentariosController.create);
 
 
 // cadastrar
