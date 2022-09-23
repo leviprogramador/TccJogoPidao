@@ -18,7 +18,7 @@ module.exports ={
     async create (request, response) {
         try {
     const {plataforma_Id, jogos_Id, Data_Jogo} = request.body;
-    const sql = 'INSERT INTO jogoplataforma(plataforma_id, jogo_Id, Data_Jogo) VALUES (?, ?, ?, ?, ?)';
+    const sql = 'INSERT INTO jogoplataforma(plataforma_id, jogo_Id, Data_Jogo) VALUES ( ?, ?, ?)';
     const values = [plataforma_Id, jogos_Id, Data_Jogo];
     const confirmacao = await db.query (sql, values);
     const jogoplataforma = confirmacao[0].insertId;
