@@ -59,7 +59,6 @@ router.get('/genero', GeneroController.listarGenero);
 // excluir
 
 router.get('/imagem', ImagemController.listarImagem);
-
 router.post('/imagem', ImagemController.create);
 // editar
 // excluir
@@ -77,7 +76,6 @@ router.get('/jogoplataforma', JogoPlataformaController.listarJogoPlataforma);
 // excluir
 
 router.get('/jogos', JogosController.listarJogos);
-
 router.post('/jogos', JogosController.create);
 // editar
 // excluir

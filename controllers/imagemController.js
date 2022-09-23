@@ -27,9 +27,9 @@ module.exports ={
 
             const confirmacao = await db.query(sql,values);
 
-            const imagem = confirmacao[0].insertId;
+            const imagem_tabela = confirmacao[0].insertId;
 
-            return response.status(200).json({confirma: 'Sucesso', message: imagem})
+            return response.status(200).json({confirma: 'Sucesso', message: imagem_tabela})
         } catch (error) {
             return response.status(500).json({confirma: 'Erro, message: error'})
         }
