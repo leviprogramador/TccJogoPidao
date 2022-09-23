@@ -1,5 +1,5 @@
 //levi
-const { json } = require("express");
+const { json, response } = require("express");
 const db = require("../database/connection");
 
 module.exports ={
@@ -27,6 +27,19 @@ module.exports ={
     return response.status(200).json({confirma: 'Sucesso', message: jogo_id});
         } catch (error) {
             return response.status (500).json({Confirma: 'Erro', message: error});
+        }
+    },
+    async update (request, response) {
+        try {
+            const { Informaçoes, Genero, linkvid, Nome, sinopse } = request.body;
+            const { jogo_id } = request.params;
+            const sql = 'UPDATE jogos SET Informaçoes = ?, Genero = ?, linkvid = ?, Nome= ?, Sinopse= ? WHERE jogo_id = ?;';
+            const values = [Informaçoes, Genero, linkvid, Nome, Sinopse, jogo_id];
+            const atualizacao = await db.query (sql, values);
+            return response.status(200).json({confirma: 'Sucesso', message: 'Dados Atualizados'});
+
+        } catch (error){
+            return response.status(500).json ({confirma: 'Erro', message: error});
         }
     },
 };
