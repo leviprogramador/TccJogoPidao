@@ -30,6 +30,19 @@ module.exports ={
                 return response.status(500).json({confirma: 'Erro', message: error});
             }
         },
+        async update (request, response) {
+            try {
+                const { usu_id, jogo_id, comentariofeito, ContadorLIke, Resposta} = request.body;
+                const { coment_id } = request.params;
+                const sql = 'UPDATE comentarios SET usu_id = ?, jogo_id = ?, comentariofeito = ?, ContadorLIke= ?, Resposta= ? WHERE conent_id = ?;';
+                const values = [usu_id, jogo_id, comentariofeito,ContadorLIke, Resposta];
+                const atualizacao = await db.query (sql, values);
+                return response.status(200).json({confirma: 'Sucesso', message: 'Dados Atualizados'});
+    
+            } catch (error){
+                return response.status(500).json ({confirma: 'Erro', message: error});
+            }
+        },
     };
 
 
