@@ -42,14 +42,12 @@ router.get('/alternativas', AlternativasController.listarAlternativas);
 router.get('/comentarios', ComentariosController.listarComentarios);
 router.post('/comentarios', ComentariosController.create);
 
-
-// cadastrar
 // editar
 // excluir
 
 router.get('/favoritos', FavoritosController.listarFavoritos);
 router.post('/favoritos', FavoritosController.create);
-// editar
+router.update('/favoritos', FavoritosController.update);
 // excluir
 
 router.get('/genero', GeneroController.listarGenero);
@@ -60,7 +58,7 @@ router.get('/genero', GeneroController.listarGenero);
 
 router.get('/imagem', ImagemController.listarImagem);
 router.post('/imagem', ImagemController.create);
-// editar
+router.update('/imagem', ImagemController.update);
 // excluir
 
 router.get('/joggenero', JogGeneroController.listarJogGenero);
@@ -70,9 +68,8 @@ router.get('/joggenero', JogGeneroController.listarJogGenero);
 // excluir
 
 router.get('/jogoplataforma', JogoPlataformaController.listarJogoPlataforma);
-
-// cadastrar
-// editar
+router.post('/jogoplataforma', JogoPlataformaController.create);
+router.update('/jogoplataforma', JogoPlataformaController.update);
 // excluir
 
 router.get('/jogos', JogosController.listarJogos);

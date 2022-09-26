@@ -31,7 +31,7 @@ module.exports ={
     },
     async update (request, response) {
         try {
-            const { Informaçoes, Genero, linkvid, Nome, sinopse } = request.body;
+            const { Informaçoes, Genero, linkvid, Nome, Sinopse } = request.body;
             const { jogo_id } = request.params;
             const sql = 'UPDATE jogos SET Informaçoes = ?, Genero = ?, linkvid = ?, Nome= ?, Sinopse= ? WHERE jogo_id = ?;';
             const values = [Informaçoes, Genero, linkvid, Nome, Sinopse, jogo_id];
