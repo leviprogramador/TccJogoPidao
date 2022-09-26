@@ -27,4 +27,23 @@ module.exports ={
             return response.status(500).json({confirma: 'erro', message: error});
         }
     },
+
+    async update(request, response) { 
+        try {
+                
+            const { comen_id } = request.body;
+               
+            const { usu_id } = request.params; 
+              
+            const sql = 'UPDATE tbllike SET coment_id = ? WHERE usu_id = ?;';   
+                
+            const values = [comen_id];   
+              
+            const atualizacao = await db.query(sql, values);
+               
+            return response.status(200).json({confirma: 'Sucesso', message: 'Dados atualizados'});            
+        } catch (error) { 
+            return response.status(500).json({confirma: 'Erro', message: error});
+        }        
+    },
 };

@@ -53,7 +53,7 @@ router.get('/favoritos', FavoritosController.listarFavoritos);
 
 router.get('/genero', GeneroController.listarGenero);
 router.post('/genero', GeneroController.create);
-// editar
+router.patch('/genero/:Genero_id', GeneroController.update);
 // excluir
 
 router.get('/imagem', ImagemController.listarImagem);
@@ -64,7 +64,7 @@ router.get('/imagem', ImagemController.listarImagem);
 
 router.get('/joggenero', JogGeneroController.listarJogGenero);
 router.post('/joggenero', JogGeneroController.create);
-// editar
+router.patch('/joggenero/Genero_id:', JogGeneroController.update);
 // excluir
 
 router.get('/jogoplataforma', JogoPlataformaController.listarJogoPlataforma);
@@ -99,7 +99,7 @@ router.get('/quiz', QuizController.listarQuiz);
 
 router.get('/tbllike', TblLikeController.listarTblLike);
 router.post('/tbllike', TblLikeController.create);
-// editar
+router.patch('/tbllike/:usu_id', TblLikeController.update);
 // excluir
 
 router.get('/usuario', UsuarioController.listarUsuario);

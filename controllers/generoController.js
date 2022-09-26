@@ -27,5 +27,24 @@ module.exports ={
             return response.status(500).json({confirma: 'erro', message: error});
         }
     },
+
+    async update(request, response) { 
+        try {
+                
+            const { Nome_Genero } = request.body;
+               
+            const { Genero_id } = request.params; 
+              
+            const sql = 'UPDATE genero SET Nome_Genero = ? WHERE Genero_id = ?;';   
+                
+            const values = [Nome_Genero, Genero_id];   
+              
+            const atualizacao = await db.query(sql, values);
+               
+            return response.status(200).json({confirma: 'Sucesso', message: 'Dados atualizados'});            
+        } catch (error) { 
+            return response.status(500).json({confirma: 'Erro', message: error});
+        }        
+    },
 };
 

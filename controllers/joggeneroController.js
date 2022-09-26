@@ -27,4 +27,23 @@ module.exports ={
             return response.status(500).json({confirma: 'erro', message: error});
         }
     },
+
+    async update(request, response) { 
+        try {
+                
+            const { jogo_id } = request.body;
+               
+            const { genero_id } = request.params; 
+              
+            const sql = 'UPDATE joggenero SET jogo_id = ? WHERE genero_id = ?;';   
+                
+            const values = [jogo_id];   
+              
+            const atualizacao = await db.query(sql, values);
+               
+            return response.status(200).json({confirma: 'Sucesso', message: 'Dados atualizados'});            
+        } catch (error) { 
+            return response.status(500).json({confirma: 'Erro', message: error});
+        }        
+    },
 };
