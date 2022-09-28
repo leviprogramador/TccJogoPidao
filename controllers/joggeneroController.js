@@ -6,7 +6,7 @@ module.exports ={
     async listarJogGenero(request, response) {
         try{
             const sql = 'select genero_id, jogo_id FROM joggenero';
-            const genero = await db.query(sql);
+            const joggenero = await db.query(sql);
             return response.status(200).json ({confirma: 'sucesso', nResults: joggenero[0].leght, message: joggenero[0]});
         } catch (error) {
             return response.status(500).json({confirma: 'Erro', message: error});
@@ -43,6 +43,23 @@ module.exports ={
                
             return response.status(200).json({confirma: 'Sucesso', message: 'Dados atualizados'});            
         } catch (error) { 
+            return response.status(500).json({confirma: 'Erro', message: error});
+        }        
+    },
+
+    async delete(request, response) { 
+        try {
+               
+            const { genero_id } = request.params;    
+               
+            const sql = 'DELETE FROM joggenero WHERE genero_id = ?'; 
+                
+            const values = [genero_id];
+                   
+            await db.query(sql, values);  
+               
+            return response.status(200).json({confirma: 'Sucesso', message:'joggenero com id ' + mes_id + ' excluída com sucesso'}); 
+        } catch (error) {
             return response.status(500).json({confirma: 'Erro', message: error});
         }        
     },

@@ -6,7 +6,7 @@ module.exports ={
     async listarTblLike(request, response) {
         try{
             const sql = 'select usu_id, coment_id FROM tbllike';
-            const genero = await db.query(sql);
+            const tbllike = await db.query(sql);
             return response.status(200).json ({confirma: 'TblLike', nResults: tbllike[0].leght, message: tbllike[0]});
         } catch (error) {
             return response.status(500).json({confirma: 'Erro', message: error});
@@ -37,12 +37,29 @@ module.exports ={
               
             const sql = 'UPDATE tbllike SET coment_id = ? WHERE usu_id = ?;';   
                 
-            const values = [comen_id];   
+            const values = [usu_id, comen_id];   
               
             const atualizacao = await db.query(sql, values);
                
             return response.status(200).json({confirma: 'Sucesso', message: 'Dados atualizados'});            
         } catch (error) { 
+            return response.status(500).json({confirma: 'Erro', message: error});
+        }        
+    },
+
+    async delete(request, response) { 
+        try {
+               
+            const { usu_id } = request.params;    
+               
+            const sql = 'DELETE FROM tbllike WHERE usu_id = ?'; 
+                
+            const values = [usu_id];
+                   
+            await db.query(sql, values);  
+               
+            return response.status(200).json({confirma: 'Sucesso', message:'tbllike com id ' + mes_id + ' excluída com sucesso'}); 
+        } catch (error) {
             return response.status(500).json({confirma: 'Erro', message: error});
         }        
     },

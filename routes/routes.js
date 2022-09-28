@@ -65,7 +65,7 @@ router.get('/imagem', ImagemController.listarImagem);
 router.get('/joggenero', JogGeneroController.listarJogGenero);
 router.post('/joggenero', JogGeneroController.create);
 router.patch('/joggenero/Genero_id:', JogGeneroController.update);
-// excluir
+router.delet('/joggenero/Genero_id:', JogGeneroController.delete);
 
 router.get('/jogoplataforma', JogoPlataformaController.listarJogoPlataforma);
 
