@@ -29,4 +29,23 @@ module.exports ={
             return response.status (500).json({Confirma: 'Erro', message: error});
         }
     },
+
+    async update(request, response) { 
+        try {
+                // parâmtros passados via corpo da requisição
+            const {Data_Jogo, plataforma_Id} = request.body;
+                // parâmetro passado via url na chamada da api pelo front-end
+            const { jogo_id} = request.params; 
+                // instrução sql para atualização
+            const sql = 'UPDATE jogoplataforma SET Data_jogo = ?, plataforma_Id = ? WHERE jogo_Id = ? ;';  
+                // definição de array com os parâmetros que receberam os valores do front-end
+            const values = [Data_Jogo, plataforma_Id];   
+                // executa a instrução de atualização no banco de dados    
+            const atualizacao = await db.query(sql, values);
+                // Mensagem de retorno no formato JSON
+            return response.status(200).json({confirma: 'Sucesso', message: 'Dados atualizados'});            
+        } catch (error) { 
+            return response.status(500).json({confirma: 'Erro', message: error});
+        }        
+    },
 };

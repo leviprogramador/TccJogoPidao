@@ -46,15 +46,13 @@ const UsuarioController = require ('../controllers/usuarioController');
     router.post('/comentarios', ComentariosController.create);
     router.patch ('/comentarios/:coment_id', ComentariosController.update);
 
+// editar
+// excluir
 
-    // cadastrar
-    // editar
-    // excluir
-
-    router.get('/favoritos', FavoritosController.listarFavoritos);
-    router.post('/favoritos', FavoritosController.create);
-    // editar
-    // excluir
+router.get('/favoritos', FavoritosController.listarFavoritos);
+router.post('/favoritos', FavoritosController.create);
+router.update('/favoritos', FavoritosController.update);
+// excluir
 
     router.get('/genero', GeneroController.listarGenero);
 
@@ -62,10 +60,10 @@ const UsuarioController = require ('../controllers/usuarioController');
     // editar
     // excluir
 
-    router.get('/imagem', ImagemController.listarImagem);
-    router.post('/imagem', ImagemController.create);
-    // editar
-    // excluir
+router.get('/imagem', ImagemController.listarImagem);
+router.post('/imagem', ImagemController.create);
+router.update('/imagem', ImagemController.update);
+// excluir
 
     router.get('/joggenero', JogGeneroController.listarJogGenero);
 
@@ -73,11 +71,10 @@ const UsuarioController = require ('../controllers/usuarioController');
     // editar
     // excluir
 
-    router.get('/jogoplataforma', JogoPlataformaController.listarJogoPlataforma);
-
-    // cadastrar
-    // editar
-    // excluir
+router.get('/jogoplataforma', JogoPlataformaController.listarJogoPlataforma);
+router.post('/jogoplataforma', JogoPlataformaController.create);
+router.update('/jogoplataforma', JogoPlataformaController.update);
+// excluir
 
     router.get('/jogos', JogosController.listarJogos);
     router.post('/jogos', JogosController.create);
