@@ -44,10 +44,9 @@ const UsuarioController = require ('../controllers/usuarioController');
 
     router.get('/comentarios', ComentariosController.listarComentarios);
     router.post('/comentarios', ComentariosController.create);
-    router.patch ('/comentarios/:coment_id', ComentariosController.update);
 
-// editar
-// excluir
+    // editar
+    // excluir
 
 router.get('/favoritos', FavoritosController.listarFavoritos);
 router.post('/favoritos', FavoritosController.create);
@@ -78,11 +77,12 @@ router.patch('/jogoplataforma', JogoPlataformaController.update);
 
     router.get('/jogos', JogosController.listarJogos);
     router.post('/jogos', JogosController.create);
-    router.patch('/jogos/:jogo_id', JogosController.update);
     // editar
     // excluir
 
     router.get('/perguntas', PerguntasController.listarPerguntas);
+    router.post('/perguntas', PerguntasController.create);
+    router.patch('/perguntas/:perg_id', PerguntasController.update);
 
     // cadastrar
     // editar
@@ -95,6 +95,19 @@ router.patch('/jogoplataforma', JogoPlataformaController.update);
     // excluir
 
     router.get('/quiz', QuizController.listarQuiz);
+    router.post('/quiz', QuizController.update);
+    router.patch('/quiz/:quiz_id', QuizController.update)
+
+
+    // cadastrar
+    // editar
+    // excluir
+
+    router.get('/tbllike', TblLikeController.listarTblLike);
+
+    // cadastrar
+    // editar
+    // excluir
 
     // cadastrar
     // editar
@@ -110,9 +123,12 @@ router.patch('/jogoplataforma', JogoPlataformaController.update);
     router.post('/usuario', UsuarioController.create);
     router.patch ('/usuario/:usu_id', UsuarioController.update);
 
-// cadastrar
-// editar
-// excluir
+    router.get('/usuario', UsuarioController.listarUsuario);
+    router.post('/usuario', UsuarioController.create);
+
+    // cadastrar
+    // editar
+    // excluir
 
 
 module.exports = router;
