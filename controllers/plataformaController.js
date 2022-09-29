@@ -7,7 +7,7 @@ module.exports ={
         try{
             const sql = 'SELECT plataforma_id, NomePlataforma, Empresa FROM plataforma;';  
             const plataforma = await db.query(sql); 
-            return response.status(200).json({confirma: 'Sucesso', nResults: perguntas[0].length, message: plataforma[0]});  
+            return response.status(200).json({confirma: 'Sucesso', nResults: plataforma[0].length, message: plataforma[0]});  
         } catch (error) {
             return response.status(500).json({confirma: 'Erro', message: error});
 

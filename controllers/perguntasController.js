@@ -5,7 +5,7 @@ const db = require("../database/connection");
 module.exports ={
     async listarPerguntas(request, response) {
         try{
-            const sql = 'SELECT perg_id, Pergunta, quiz_Id, Imagem FROM perguntas;';  
+            const sql = 'SELECT perg_id, Pergunta, quiz_id, Imagem FROM perguntas;';  
             const perguntas = await db.query(sql); 
             return response.status(200).json({confirma: 'Sucesso', nResults: perguntas[0].length, message: perguntas[0]});  
         } catch (error) {
@@ -17,11 +17,11 @@ module.exports ={
     async create(request, response) {
         try {
                 // parâmtros passados via corpo da requisição
-            const { Pergunta, quiz_Id, Imagem} = request.body;  
+            const { Pergunta, quiz_id, Imagem} = request.body;  
                 // instrução sql para inserção
             const sql = 'INSERT INTO perguntas (Pergunta, quiz_Id, Imagem) VALUES (?, ?, ?)'; 
                 // definição de array com os parâmetros que receberam os valores do front-end
-            const values = [Pergunta, quiz_Id, Imagem]; 
+            const values = [Pergunta, quiz_id, Imagem]; 
                 // executa a instrução de inserção no banco de dados       
             const confirmacao = await db.query(sql, values);
                 // Exibe o id do registro inserido
@@ -35,13 +35,13 @@ module.exports ={
     async update(request, response) {​​​​​​​ 
         try {​​​​​​​
                   // parâmtros passados via corpo da requisição
-                  const {Pergunta, quiz_Id, Imagem} = request.body; 
+                  const {Pergunta, quiz_id, Imagem} = request.body; 
                  // parâmetro passado via url na chamada da api pelo front-end
-                 const {​​​​​​​ perg_id}​​​​​​​ = request.params; 
+                 const {​​​​​​perg_id}​​​​​​​ = request.params; 
                  // instrução sql para atualização
                  const sql = 'UPDATE perguntas SET Pergunta = ?, quiz_Id = ?, Imagem = ? WHERE perg_id = ?;';  
                  // definição de array com os parâmetros que receberam os valores do front-end
-                 const values = [ Pergunta, quiz_Id, Imagem];   
+                 const values = [ Pergunta, quiz_id, Imagem];   
                  // executa a instrução de atualização no banco de dados    
                  const atualizacao = awaitdb.query(sql, values);
                  // Mensagem de retorno no formato JSON
