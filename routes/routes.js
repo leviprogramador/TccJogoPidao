@@ -32,7 +32,10 @@ const UsuarioController = require ('../controllers/usuarioController');
 // definição de rotas
 
 
-        router.get('/alternativas', AlternativasController.listarAlternativas);
+    router.get('/alternativas', AlternativasController.listarAlternativas);
+    router.post('/alternativas', AlternativasController.create);
+    router.patch ('/alternativas/:alt_id', AlternativasController.update);
+    
 
 
     // editar
@@ -105,6 +108,20 @@ const UsuarioController = require ('../controllers/usuarioController');
     // cadastrar
     // editar
     // excluir
+
+    // cadastrar
+    // editar
+    // excluir
+
+    router.get('/tbllike', TblLikeController.listarTblLike);
+
+    // cadastrar
+    // editar
+    // excluir
+
+    router.get('/usuario', UsuarioController.listarUsuario);
+    router.post('/usuario', UsuarioController.create);
+    router.patch ('/usuario/:usu_id', UsuarioController.update);
 
     router.get('/usuario', UsuarioController.listarUsuario);
     router.post('/usuario', UsuarioController.create);

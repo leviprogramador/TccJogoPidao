@@ -1,6 +1,8 @@
 //Levi
+
+
 const { json } = require("express");
-const db = require("../database/connection");
+    const db = require("../database/connection");
 
 module.exports ={
     async listarUsuario(request, response) {
@@ -26,6 +28,19 @@ module.exports ={
             return response.status(200).json({confirma: 'Sucesso', message: usu_id});
         }catch (error) {
                 return response.status(500).json({confirma: 'Erro', message: error});
+            }
+        },
+        async update (request, response) {
+            try {
+                const { Nome, email, senha, data_nasc, TipoUsu, Pontuacao, QtdQuiz } = request.body;
+                const { usu_id } = request.params;
+                const sql = 'UPDATE usuario SET Nome = ?, email = ?, senha = ?, data_nasc = ?, TipoUsu = ?, Pontuacao = ?, QtdQuiz= ? WHERE usu_id = ?;';
+                const values = [Nome, email, senha, data_nasc, TipoUsu, Pontuacao, QtdQuiz, usu_id];
+                const atualizacao = await db.query (sql, values);
+                return response.status(200).json({confirma: 'Sucesso', message: 'Dados Atualizados'});
+    
+            } catch (error){
+                return response.status(500).json ({confirma: 'Erro', message: error});
             }
         },
     };
