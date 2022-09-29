@@ -43,7 +43,7 @@ module.exports ={
                  // definição de array com os parâmetros que receberam os valores do front-end
                  const values = [ Pergunta, quiz_id, Imagem];   
                  // executa a instrução de atualização no banco de dados    
-                 const atualizacao = awaitdb.query(sql, values);
+                 const atualizacao = await db.query(sql, values);
                  // Mensagem de retorno no formato JSON
                  return response.status(200).json({​​​​​​​confirma:'Sucesso', message:'Dados atualizados'}​​​​​​​);            
                  }​​​​​​​ catch (error) {​​​​​​​ 
