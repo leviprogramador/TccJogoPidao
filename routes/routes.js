@@ -65,7 +65,7 @@ router.get('/imagem', ImagemController.listarImagem);
 router.get('/joggenero', JogGeneroController.listarJogGenero);
 router.post('/joggenero', JogGeneroController.create);
 router.patch('/joggenero/Genero_id:', JogGeneroController.update);
-router.delet('/joggenero/Genero_id:', JogGeneroController.delete);
+router.delete('/joggenero/Genero_id:', JogGeneroController.delete);
 
 router.get('/jogoplataforma', JogoPlataformaController.listarJogoPlataforma);
 
@@ -100,7 +100,7 @@ router.get('/quiz', QuizController.listarQuiz);
 router.get('/tbllike', TblLikeController.listarTblLike);
 router.post('/tbllike', TblLikeController.create);
 router.patch('/tbllike/:usu_id', TblLikeController.update);
-// excluir
+router.delete('/tbllike/:usu_id', TblLikeController.delete);
 
 router.get('/usuario', UsuarioController.listarUsuario);
 
