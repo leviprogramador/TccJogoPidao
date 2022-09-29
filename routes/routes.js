@@ -51,7 +51,7 @@ const UsuarioController = require ('../controllers/usuarioController');
 
 router.get('/favoritos', FavoritosController.listarFavoritos);
 router.post('/favoritos', FavoritosController.create);
-router.update('/favoritos', FavoritosController.update);
+router.patch('/favoritos', FavoritosController.update);
 // excluir
 
     router.get('/genero', GeneroController.listarGenero);
@@ -62,7 +62,7 @@ router.update('/favoritos', FavoritosController.update);
 
 router.get('/imagem', ImagemController.listarImagem);
 router.post('/imagem', ImagemController.create);
-router.update('/imagem', ImagemController.update);
+router.patch('/imagem', ImagemController.update);
 // excluir
 
     router.get('/joggenero', JogGeneroController.listarJogGenero);
@@ -73,7 +73,7 @@ router.update('/imagem', ImagemController.update);
 
 router.get('/jogoplataforma', JogoPlataformaController.listarJogoPlataforma);
 router.post('/jogoplataforma', JogoPlataformaController.create);
-router.update('/jogoplataforma', JogoPlataformaController.update);
+router.patch('/jogoplataforma', JogoPlataformaController.update);
 // excluir
 
     router.get('/jogos', JogosController.listarJogos);
