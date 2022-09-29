@@ -29,6 +29,19 @@ module.exports ={
                 return response.status(500).json({confirma: 'Erro', message: error});
             }
         },
+        async update (request, response) {
+            try {
+                const { perg_id, alternativa, correta, imagem} = request.body;
+                const { alt_id } = request.params;
+                const sql = 'UPDATE alternativas SET perg_id = ?, alternativa = ?, correta = ?, imagem= ? WHERE alt_id = ?;';
+                const values = [perg_id, alternativa, correta, imagem];
+                const atualizacao = await db.query (sql, values);
+                return response.status(200).json({confirma: 'Sucesso', message: 'Dados Atualizados'});
+    
+            } catch (error){
+                return response.status(500).json ({confirma: 'Erro', message: error});
+            }
+        },
         
     };
 

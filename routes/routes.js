@@ -33,6 +33,9 @@ const UsuarioController = require ('../controllers/usuarioController');
 
 
     router.get('/alternativas', AlternativasController.listarAlternativas);
+    router.post('/alternativas', AlternativasController.create);
+    router.patch ('/alternativas/:alt_id', AlternativasController.update);
+    
 
 
     // editar
@@ -41,6 +44,7 @@ const UsuarioController = require ('../controllers/usuarioController');
 
     router.get('/comentarios', ComentariosController.listarComentarios);
     router.post('/comentarios', ComentariosController.create);
+    router.patch ('/comentarios/:coment_id', ComentariosController.update);
 
 
     // cadastrar
