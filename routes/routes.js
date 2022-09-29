@@ -32,81 +32,86 @@ const UsuarioController = require ('../controllers/usuarioController');
 // definição de rotas
 
 
-router.get('/alternativas', AlternativasController.listarAlternativas);
+        router.get('/alternativas', AlternativasController.listarAlternativas);
 
 
-// editar
-// excluir
+    // editar
+    // excluir
 
 
-router.get('/comentarios', ComentariosController.listarComentarios);
-router.post('/comentarios', ComentariosController.create);
+    router.get('/comentarios', ComentariosController.listarComentarios);
+    router.post('/comentarios', ComentariosController.create);
 
-// editar
-// excluir
+    // editar
+    // excluir
 
-router.get('/favoritos', FavoritosController.listarFavoritos);
-router.post('/favoritos', FavoritosController.create);
-router.update('/favoritos', FavoritosController.update);
-// excluir
+    router.get('/favoritos', FavoritosController.listarFavoritos);
+    router.post('/favoritos', FavoritosController.create);
+    router.update('/favoritos', FavoritosController.update);
+    // excluir
 
-router.get('/genero', GeneroController.listarGenero);
+    router.get('/genero', GeneroController.listarGenero);
 
-// cadastrar
-// editar
-// excluir
+    // cadastrar
+    // editar
+    // excluir
 
-router.get('/imagem', ImagemController.listarImagem);
-router.post('/imagem', ImagemController.create);
-router.update('/imagem', ImagemController.update);
-// excluir
+    router.get('/imagem', ImagemController.listarImagem);
+    router.post('/imagem', ImagemController.create);
+    router.patch('/imagem/:ImgJogo_id', ImagemController.update);
+    // excluir
 
-router.get('/joggenero', JogGeneroController.listarJogGenero);
+    router.get('/joggenero', JogGeneroController.listarJogGenero);
 
-// cadastrar
-// editar
-// excluir
+    // cadastrar
+    // editar
+    // excluir
 
-router.get('/jogoplataforma', JogoPlataformaController.listarJogoPlataforma);
-router.post('/jogoplataforma', JogoPlataformaController.create);
-router.update('/jogoplataforma', JogoPlataformaController.update);
-// excluir
+    router.get('/jogoplataforma', JogoPlataformaController.listarJogoPlataforma);
+    router.post('/jogoplataforma', JogoPlataformaController.create);
+    router.patch('/jogoplataforma', JogoPlataformaController.update);
+    // excluir
 
-router.get('/jogos', JogosController.listarJogos);
-router.post('/jogos', JogosController.create);
-// editar
-// excluir
+    router.get('/jogos', JogosController.listarJogos);
+    router.post('/jogos', JogosController.create);
+    // editar
+    // excluir
 
-router.get('/perguntas', PerguntasController.listarPerguntas);
+    router.get('/perguntas', PerguntasController.listarPerguntas);
+    router.post('/perguntas', PerguntasController.create);
+    router.patch('/perguntas/:perg_id', PerguntasController.update);
 
-// cadastrar
-// editar
-// excluir
+    // cadastrar
+    // editar
+    // excluir
 
-router.get('/plataforma', PlataformaController.listarPlataforma);
+    router.get('/plataforma', PlataformaController.listarPlataforma);
 
-// cadastrar
-// editar
-// excluir
+    // cadastrar
+    // editar
+    // excluir
 
-router.get('/quiz', QuizController.listarQuiz);
+    router.get('/quiz', QuizController.listarQuiz);
+    router.post('/quiz', QuizController.update);
+    router.patch('/quiz/:quiz_id', QuizController.update)
 
-// cadastrar
-// editar
-// excluir
 
-router.get('/tbllike', TblLikeController.listarTblLike);
+    // cadastrar
+    // editar
+    // excluir
 
-// cadastrar
-// editar
-// excluir
+    router.get('/tbllike', TblLikeController.listarTblLike);
 
-router.get('/usuario', UsuarioController.listarUsuario);
-router.post('/usuario', UsuarioController.create);
+    // cadastrar
+    // editar
+    // excluir
 
-// cadastrar
-// editar
-// excluir
+    router.get('/usuario', UsuarioController.listarUsuario);
+    router.post('/usuario', UsuarioController.create);
+
+    // cadastrar
+    // editar
+    // excluir
 
 
 module.exports = router;
