@@ -1,6 +1,7 @@
 //Vi
 const { json } = require("express");
 const db = require("../database/connection");
+const { update } = require("./alternativasController");
 
 module.exports ={
     async listarPerguntas(request, response) {
@@ -30,6 +31,17 @@ module.exports ={
             return response.status(500).json({confirma: 'Erro', message: error});
         }   
     },
-
+    async update (request, response) {
+        try {
+            const {Pergunta, quiz_id, Imagem} = request.body; 
+            const {perg_id} = request.params; 
+            const sql = 'UPDATE perguntas SET Pergunta = ?, quiz_Id = ?, Imagem = ? WHERE perg_id = ?;';  
+            const values = [ Pergunta, quiz_id, Imagem];   
+            const atualizacao = await db.query(sql, values);
+            return response.status(200).json({confirma: 'Sucesso', message: 'Atualizado'});
+        } catch (error) {
+            return response.status(500).json({confirma: 'Erro', message: error});    
+        }
+    }, 
          
 };
