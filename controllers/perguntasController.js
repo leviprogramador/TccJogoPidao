@@ -10,9 +10,7 @@ module.exports ={
             return response.status(200).json({confirma: 'Sucesso', nResults: perguntas[0].length, message: perguntas[0]});  
         } catch (error) {
             return response.status(500).json({confirma: 'Erro', message: error});
-
         }
-
     }, 
     async create(request, response) {
         try {
@@ -32,23 +30,6 @@ module.exports ={
             return response.status(500).json({confirma: 'Erro', message: error});
         }   
     },
-    async update(request, response) {​​​​​​​ 
-        try {​​​​​​​
-                  // parâmtros passados via corpo da requisição
-                  const {Pergunta, quiz_id, Imagem} = request.body; 
-                 // parâmetro passado via url na chamada da api pelo front-end
-                 const {​​​​​​perg_id}​​​​​​​ = request.params; 
-                 // instrução sql para atualização
-                 const sql = 'UPDATE perguntas SET Pergunta = ?, quiz_Id = ?, Imagem = ? WHERE perg_id = ?;';  
-                 // definição de array com os parâmetros que receberam os valores do front-end
-                 const values = [ Pergunta, quiz_id, Imagem];   
-                 // executa a instrução de atualização no banco de dados    
-                 const atualizacao = await db.query(sql, values);
-                 // Mensagem de retorno no formato JSON
-                 return response.status(200).json({​​​​​​​confirma:'Sucesso', message:'Dados atualizados'}​​​​​​​);            
-                 }​​​​​​​ catch (error) {​​​​​​​ 
-                 return response.status(500).json({​​​​​​​confirma:'Erro', message:error}​​​​​​​);
-                }​​​​​​​        
-            }​​​​​​​,
+
          
 };
