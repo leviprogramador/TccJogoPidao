@@ -32,6 +32,19 @@ module.exports ={
             return response.status(500).json({confirma: 'Erro', message: error});
         }   
     }, 
+    async update (request, response) {
+        try{
+            const { NomePlataforma, Empresa } = request.body;
+            const {plataforma_id} = request.params;
+            const sql = 'UPDATE plataformas SET NomePlataforma = ?, Empresa = ? WHERE plataforma_id = ?;';
+            const values = [NomePlataforma, Empresa];
+            const atualizacao = awaitdb.query(sql,values);
+            return response.status(500).json({confirma: 'Erro', message:error});
 
+                 
+        } catch (error) {
+            return response.status(500).json({confirma:'Erro', message:error});
+        }
+    },
 
 };

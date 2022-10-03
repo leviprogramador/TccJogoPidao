@@ -23,7 +23,7 @@ module.exports ={
             const confirmacao = await db.query (sql, values);
             const alt_id = confirmacao[0].insertId;
 
-            
+                                          
             return response.status(200).json({confirma: 'Sucesso', message: alt_id});
         }catch (error) {
                 return response.status(500).json({confirma: 'Erro', message: error});

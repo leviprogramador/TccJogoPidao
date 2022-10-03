@@ -74,17 +74,21 @@ const UsuarioController = require ('../controllers/usuarioController');
 
     router.get('/perguntas', PerguntasController.listarPerguntas);
     router.post('/perguntas', PerguntasController.create);
+    router.patch('/perguntas/:perg_id', PerguntasController.update);
     //router.patch('/perguntas/:perg_id', PerguntasController.update);
     // excluir
 
     router.get('/plataforma', PlataformaController.listarPlataforma);
+    router.post('/plataforma', PlataformaController.create);
+    router.patch('/plataforma/:plataforma_id', PlataformaController.update);
     // cadastrar
     // editar
     // excluir
 
     router.get('/quiz', QuizController.listarQuiz);
     router.post('/quiz', QuizController.create);
-    //router.patch('/quiz/:quiz_id', QuizController.update)
+    router.patch('/quiz/:quiz_id', QuizController.update);
+   
     // excluir
 
     router.get('/tbllike', TblLikeController.listarTblLike);
