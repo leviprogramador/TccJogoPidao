@@ -5,7 +5,18 @@ const db = require("../database/connection");
 module.exports ={
     async listarJogoPlataforma(request, response) {
         try{
-            const sql = 'plataforma_Id, jogo_Id, Data_Jogo,;'
+
+            const {plataforma_Id ='%%'} =request.body;
+            const { jogo_Id ='%%'} =request.body;
+            
+            const { page = 1, limit = 5 } =request.query;
+            const inicio = (page -1) * limit;
+
+
+            const sql = 'SELECT jp.plataforma_Id, jp.jogo_Id, Data_Jogo From jogoplataforma jp INNER JOIN plataforma pl ON jp.plataforma_Id = pl.plataforma_Id INNER JOIN jogos j ON jp.jogo_Id = j.jogo_Id WHERE jp.plataforma_Id LIKE ? AND jp.jogo_Id Like ? AND jp.Data_Jogo LIKE ? ;'
+
+
+            const values = [ jogo_Id, plataforma_Id, parseInt(limit)];
             const jogoplataforma = await db.query(sql);
 
             return response.status(200).json ({confirma: 'Sucesso', nResults: jogoplataforma[0].length, message: jogoplataforma[0]});

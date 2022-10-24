@@ -6,7 +6,17 @@ const { create } = require("./favoritosController");
 module.exports ={
     async listarImagem(request, response) {
         try{
-            const sql = 'SELECT ImgJogo_id, jogo_id, imagem, ImagemCapa FROM imagem';
+            
+            const { jogo_Id ='%%'} =request.body;
+            
+            const { page = 1, limit = 5 } =request.query;
+            const inicio = (page -1) * limit;
+
+            
+            const sql = 'SELECT im.ImgJogo_id, im.jogo_Id, img, ImagemCapa  From imagem im INNER JOIN jogos j  ON im.jogo_id = j.jogo_id  WHERE im.ImgJogo_id LIKE ? AND im.jogo_Id Like ? AND im.img LIKE ? AND im.ImagemCapa LIKE  ?;'
+
+
+            const values = [ jogo_Id, parseInt(limit)];
             const imagem = await db.query(sql);
 
             return response.status(200).json ({confirma: 'Sucesso', nResults: imagem[0].lenght, message: imagem[0]});
