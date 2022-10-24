@@ -8,16 +8,15 @@ module.exports ={
         try{
             
             const { jogo_Id ='%%'} =request.body;
+            const { ImgJogo_id ='%%'} =request.body;
             
-            const { page = 1, limit = 5 } =request.query;
-            const inicio = (page -1) * limit;
 
             
-            const sql = 'SELECT im.ImgJogo_id, im.jogo_Id, img, ImagemCapa  From imagem im INNER JOIN jogos j  ON im.jogo_id = j.jogo_id  WHERE im.ImgJogo_id LIKE ? AND im.jogo_Id Like ? AND im.img LIKE ? AND im.ImagemCapa LIKE  ?;'
+            const sql = 'SELECT im.ImgJogo_id, im.jogo_Id, img, ImagemCapa From imagem im  WHERE im.ImgJogo_id LIKE ? AND im.jogo_Id Like ?;'
 
 
-            const values = [ jogo_Id, parseInt(limit)];
-            const imagem = await db.query(sql);
+            const values = [ jogo_Id, ImgJogo_id];
+            const imagem = await db.query(sql, values);
 
             return response.status(200).json ({confirma: 'Sucesso', nResults: imagem[0].lenght, message: imagem[0]});
         } catch (error) {

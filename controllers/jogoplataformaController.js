@@ -17,7 +17,7 @@ module.exports ={
 
 
             const values = [ jogo_Id, plataforma_Id, parseInt(limit)];
-            const jogoplataforma = await db.query(sql);
+            const jogoplataforma = await db.query(sql,values);
 
             return response.status(200).json ({confirma: 'Sucesso', nResults: jogoplataforma[0].length, message: jogoplataforma[0]});
         } catch (error) {
