@@ -5,8 +5,16 @@ const db = require("../database/connection");
 module.exports = {
     async listarJogos(request, response) {
         try{
-            const sql = 'select jogo_id, Informacoes, Genero, linkvid, Nome, Sinopse from jogos;'
-            const jogos = await db.query(sql);
+            const {page = 0, limit = 5} = request.query;
+            const inicio = (page -1) * limit;
+            const {jogo_id = '%%'} = request.body;
+            const {Nome = '%%'} = request.body;
+        
+            
+            const sql = 'select j.jogo_id, j.Informacoes, j.Genero, j.linkvid, j.Nome, j.Sinopse  from jogos j WHERE j.jogo_id like ? AND j.Nome like ? order by j.Nome';
+            const values = [ jogo_id, Nome, Sinopse, parseInt(limit) ];
+            const jogos = await db.query(sql, values);
+
 
             return response.status(200).json ({confirma: 'Sucesso', nResults: jogos[0].length, message: jogos[0]});
         } catch (error) {
@@ -42,6 +50,8 @@ module.exports = {
             return response.status(500).json ({confirma: 'Erro', message: error});
         }
     },
+    
+
 };
 
 //gui passou por aqui

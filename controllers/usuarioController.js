@@ -16,6 +16,18 @@ module.exports ={
         }
 
     },
+    async login(request, response) {
+        const { email, senha} = request.body;
+        try{
+            const sql = 'select usu_id, Nome, email, senha, data_nasc, TipoUsu, Pontuacao, QtdQuiz FROM usuario WHERE email = ? AND senha = ?;';
+            const values = [email, senha];
+            const usuario = await db.query(sql, values)
+            return response.status(200).json ({confirma: 'Sucesso', nResults: usuario[0].length, message: usuario[0]});
+        } catch (error) {
+            return response.status(500).json({confirma: 'Erro', message: error});
+
+        }
+    },
     async create (request, response) {
         try {
             const {Nome, email, senha, data_nasc, TipoUsu, Pontuacao, QtdQuiz} = request.body;

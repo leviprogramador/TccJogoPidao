@@ -69,6 +69,7 @@ const UsuarioController = require ('../controllers/usuarioController');
 
     router.get('/jogos', JogosController.listarJogos);
     router.post('/jogos', JogosController.create);
+    router.patch('/jogos/:jogo_id', JogosController.update);
     // editar
     // excluir
 
@@ -98,6 +99,7 @@ const UsuarioController = require ('../controllers/usuarioController');
 
 
     router.get('/usuario', UsuarioController.listarUsuario);
+    router.get ('/usuario/login', UsuarioController.login);
     router.post('/usuario', UsuarioController.create);
     router.patch ('/usuario/:usu_id', UsuarioController.update);
     // excluir
