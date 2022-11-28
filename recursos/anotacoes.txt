@@ -1,0 +1,23 @@
+Client ID
+
+1blglpdcmg53tgv2egn4952dqkjhuz
+
+Client Secret
+do046adjepa27297shw9btwfzvvfhw
+
+
+gerar acesso
+https://id.twitch.tv/oauth2/token?client_id=1blglpdcmg53tgv2egn4952dqkjhuz&client_secret=do046adjepa27297shw9btwfzvvfhw&grant_type=client_credentials
+
+//acesso
+{
+	"access_token": "bhgx9itg33i2pqdq6op4r01gowjgip",
+	"expires_in": 5127296,
+	"token_type": "bearer"
+}
+
+api
+https://api.igdb.com/v4
+
+doc auxilio
+https://api-docs.igdb.com/#requests
