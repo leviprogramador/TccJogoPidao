@@ -1,4 +1,4 @@
-//levi
+
 const { json } = require("express");
 const db = require("../database/connection");
 
@@ -9,9 +9,11 @@ module.exports ={
             const inicio = (page -1) * limit;
 
             const { perg_id = '%%' } = request.body
-            const sql = 'SELECT a.alt_id, a.perg_id, a.alternativa, a.Correta, a.imagem FROM alternativas a INNER JOIN perguntas p ON a.perg_id = p.perg_id WHERE a.alt_id like ? AND a.perg_id like ? ORDER BY a.correta ASC LIMIT ?, ?;'
+            const { correta = '%%' } = request.body
+            const { alternativa = '%%' } = request.body
+            const sql = 'SELECT a.alt_id, a.perg_id, a.alternativa, a.Correta, a.imagem FROM alternativas a INNER JOIN perguntas p ON a.perg_id = p.perg_id WHERE a.alt_id like ? AND a.perg_id like ? ORDER BY a.Correta ASC LIMIT 1, 5';
             
-            const values = [perg_id, inicio, parseInt(limit) ];
+            const values = [perg_id, inicio, correta, alternativa, parseInt(limit) ];
             const alternativas = await db.query(sql, values);
             return response.status(200).json ({confirma: 'Sucesso', nResults: alternativas[0].length, message: alternativas[0]});
         } catch (error) {

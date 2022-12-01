@@ -10,9 +10,10 @@ module.exports = {
             const {jogo_id = '%%'} = request.body;
             const {Nome = '%%'} = request.body;
         
-            
-            const sql = 'select j.jogo_id, j.Informacoes, j.Genero, j.linkvid, j.Nome, j.Sinopse  from jogos j WHERE j.jogo_id like ? AND j.Nome like ? order by j.Nome';
-            const values = [ jogo_id, Nome, Sinopse, parseInt(limit) ];
+   
+
+            const sql =  'SELECT j.jogo_id, j.Informacoes, j.Genero, j.linkvid, j.Nome, j.Sinopse  FROM jogos j WHERE j.jogo_id like ? AND j.Nome like ?  order by j.Nome ';
+            const values = [ jogo_id, Nome,  inicio, parseInt(limit) ];
             const jogos = await db.query(sql, values);
 
 

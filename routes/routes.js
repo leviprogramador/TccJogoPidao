@@ -28,6 +28,7 @@ const QuizController = require ('../controllers/quizController');
 const TblLikeController = require ('../controllers/TblLikeController');
 
 const UsuarioController = require ('../controllers/usuarioController');
+const jogosController = require('../controllers/jogosController');
 
 // definição de rotas
 
@@ -67,7 +68,7 @@ const UsuarioController = require ('../controllers/usuarioController');
     //router.patch('/jogoplataforma', JogoPlataformaController.update);
     // excluir
 
-    router.get('/jogos', JogosController.listarJogos);
+    router.get ('/jogos', JogosController.listarJogos);
     router.post('/jogos', JogosController.create);
     router.patch('/jogos/:jogo_id', JogosController.update);
     // editar
