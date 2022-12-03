@@ -8,13 +8,16 @@ module.exports ={
             const {usu_Id ='%%'} =request.body;
             const { jogo_Id ='%%'} =request.body;
             
-          
+          const {page = 1, limit =5 } = request.body
+          const inicio = (page -1 ) * limit
 
             
-            const sql = 'SELECT jp.plataforma_Id, jp.jogo_Id, Data_Jogo From jogoplataforma jp INNER JOIN plataforma pl ON jp.plataforma_Id = pl.plataforma_Id INNER JOIN jogos j ON jp.jogo_Id = j.jogo_Id WHERE jp.plataforma_Id LIKE ? AND jp.jogo_Id Like ? ;'
+        
+
+            const sql = 'SELECT f.usu_id, f.jogo_id, f.Status  FROM favoritos f INNER JOIN usuario u ON f.usu_id = u.usu_id INNER join jogos j ON f.jogo_id = j.jogo_id WHERE f.usu_id LIKE ? AND f.jogo_id LIKE ?  AND f.status LIKE ? LIMIT 1, 10 ';
 
 
-            const values = [ jogo_Id, usu_Id];
+            const values = [ jogo_Id, usu_Id, inicio    , parseInt(limit)];
             const favoritos = await db.query(sql,values);
 
             return response.status(200).json ({confirma: 'Sucesso', nResults: favoritos[0].lenght, message: favoritos[0]});
