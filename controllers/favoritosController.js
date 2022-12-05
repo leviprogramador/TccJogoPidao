@@ -5,20 +5,16 @@ const db = require("../database/connection");
 module.exports ={
     async listarFavoritos(request, response) {
         try{
-            const {usu_Id ='%%'} =request.body;
-            const { jogo_Id ='%%'} =request.body;
+            const { usu_Id ='%%' } = request.body;
+            const { jogo_Id ='%%'} = request.body;
             
-          const {page = 1, limit =5 } = request.body
-          const inicio = (page -1 ) * limit
+          const {page = 1, limit = 5 } = request.body;
+          const inicio = (page -1 ) * limit;
 
-            
-        
+            const sql = 'SELECT f.usu_id, f.jogo_id, f.Status  FROM favoritos f INNER JOIN usuario u ON f.usu_id = u.usu_id INNER join jogos j ON f.jogo_id = j.jogo_id WHERE f.usu_id LIKE ? AND f.jogo_id LIKE ? LIMIT 0, 10;';
 
-            const sql = 'SELECT f.usu_id, f.jogo_id, f.Status  FROM favoritos f INNER JOIN usuario u ON f.usu_id = u.usu_id INNER join jogos j ON f.jogo_id = j.jogo_id WHERE f.usu_id LIKE ? AND f.jogo_id LIKE ?  AND f.status LIKE ? LIMIT 1, 10 ';
-
-
-            const values = [ jogo_Id, usu_Id, inicio    , parseInt(limit)];
-            const favoritos = await db.query(sql,values);
+            const values = [usu_Id, jogo_Id];
+            const favoritos = await db.query(sql, values);
 
             return response.status(200).json ({confirma: 'Sucesso', nResults: favoritos[0].lenght, message: favoritos[0]});
         } catch (error) {
